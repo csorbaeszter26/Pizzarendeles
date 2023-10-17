@@ -702,7 +702,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbTesztaActionPerformed
 
     private void btnRendelemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelemActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "tesztverzió");
+        JOptionPane.showMessageDialog(rootPane, "tesztverzió", "FIGYELMEZTETÉS", 2);
     }//GEN-LAST:event_btnRendelemActionPerformed
 
     private void btnMegseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMegseActionPerformed
