@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
  * @author CsorbaEszterKatinka(
  */
 public class Pizzarendeles extends javax.swing.JFrame {
+    int osszeg = 0;
 
     /**
      * Creates new form Pizzarendeles
@@ -91,7 +92,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
         lblKep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizzarendeles/kepek/hosszukas.jpg"))); // NOI18N
 
         pnlAlap.setBackground(new java.awt.Color(241, 224, 160));
-        pnlAlap.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)), "Pizza alap:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
+        pnlAlap.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)), "1. Pizza alap:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
         lblMeret.setText("Méret:");
 
@@ -99,9 +100,9 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
         cbbTeszta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Válasszon tésztát!", "Vékony tészta", "Vastag tészta", "Gluténmentes tészta" }));
         cbbTeszta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cbbTeszta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbTesztaActionPerformed(evt);
+        cbbTeszta.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbbTesztaItemStateChanged(evt);
             }
         });
 
@@ -128,19 +129,9 @@ public class Pizzarendeles extends javax.swing.JFrame {
                 rbtn24ItemStateChanged(evt);
             }
         });
-        rbtn24.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                rbtn24StateChanged(evt);
-            }
-        });
         rbtn24.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbtn24MouseClicked(evt);
-            }
-        });
-        rbtn24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtn24ActionPerformed(evt);
             }
         });
 
@@ -151,11 +142,6 @@ public class Pizzarendeles extends javax.swing.JFrame {
         rbtn32.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 rbtn32ItemStateChanged(evt);
-            }
-        });
-        rbtn32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtn32ActionPerformed(evt);
             }
         });
 
@@ -220,11 +206,12 @@ public class Pizzarendeles extends javax.swing.JFrame {
         );
 
         pnlFeltet.setBackground(new java.awt.Color(241, 224, 160));
-        pnlFeltet.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)), "Feltétek:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
+        pnlFeltet.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)), "2. Feltétek:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
         pnlFeltet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         chbPepp.setText("Pepperoni");
         chbPepp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbPepp.setEnabled(false);
         chbPepp.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
@@ -243,6 +230,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
         chbSonka.setText("Sonka");
         chbSonka.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbSonka.setEnabled(false);
         chbSonka.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
@@ -261,6 +249,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
         chbKuk.setText("Kukorica");
         chbKuk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbKuk.setEnabled(false);
         chbKuk.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
@@ -279,6 +268,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
         chbGomba.setText("Gomba");
         chbGomba.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbGomba.setEnabled(false);
         chbGomba.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
@@ -297,6 +287,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
         chbHagy.setText("Hagyma");
         chbHagy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbHagy.setEnabled(false);
         chbHagy.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
@@ -307,14 +298,10 @@ public class Pizzarendeles extends javax.swing.JFrame {
                 chbTofuStateChanged(evt);
             }
         });
-        chbHagy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chbHagyActionPerformed(evt);
-            }
-        });
 
         chbPar.setText("Paradicsom");
         chbPar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbPar.setEnabled(false);
         chbPar.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
@@ -325,14 +312,10 @@ public class Pizzarendeles extends javax.swing.JFrame {
                 chbTofuStateChanged(evt);
             }
         });
-        chbPar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chbParActionPerformed(evt);
-            }
-        });
 
         chbAn.setText("Ananász");
         chbAn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbAn.setEnabled(false);
         chbAn.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
@@ -351,14 +334,10 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
         chbTofu.setText("Tofu");
         chbTofu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbTofu.setEnabled(false);
         chbTofu.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
-            }
-        });
-        chbTofu.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                chbTofuStateChanged(evt);
             }
         });
         chbTofu.addActionListener(new java.awt.event.ActionListener() {
@@ -370,6 +349,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
         chbExtra.setText("+ extra sajt");
         chbExtra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chbExtra.setEnabled(false);
         chbExtra.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbTofuItemStateChanged(evt);
@@ -380,35 +360,30 @@ public class Pizzarendeles extends javax.swing.JFrame {
                 chbTofuStateChanged(evt);
             }
         });
-        chbExtra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chbExtraActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlFeltetLayout = new javax.swing.GroupLayout(pnlFeltet);
         pnlFeltet.setLayout(pnlFeltetLayout);
         pnlFeltetLayout.setHorizontalGroup(
             pnlFeltetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFeltetLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(chbExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlFeltetLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(pnlFeltetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(chbGomba, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chbKuk, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chbSonka, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chbPepp, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(pnlFeltetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chbHagy, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chbAn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chbTofu, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlFeltetLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(pnlFeltetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(chbGomba, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbKuk, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbSonka, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbPepp, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlFeltetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chbPar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbHagy, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbAn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chbTofu, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlFeltetLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(chbExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addComponent(chbPar, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         pnlFeltetLayout.setVerticalGroup(
             pnlFeltetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,6 +413,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
         btnRendelem.setText("Megrendelem");
         btnRendelem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 3));
         btnRendelem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRendelem.setEnabled(false);
         btnRendelem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRendelemMouseClicked(evt);
@@ -465,14 +441,10 @@ public class Pizzarendeles extends javax.swing.JFrame {
         buttonGroup3.add(rbtnFizetesKp);
         rbtnFizetesKp.setText("Készpéz átvételkor");
         rbtnFizetesKp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rbtnFizetesKp.setEnabled(false);
         rbtnFizetesKp.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 rbtnFizetesKpItemStateChanged(evt);
-            }
-        });
-        rbtnFizetesKp.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                rbtnFizetesKpStateChanged(evt);
             }
         });
         rbtnFizetesKp.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -480,15 +452,11 @@ public class Pizzarendeles extends javax.swing.JFrame {
                 rbtnFizetesKpMouseClicked(evt);
             }
         });
-        rbtnFizetesKp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnFizetesKpActionPerformed(evt);
-            }
-        });
 
         buttonGroup3.add(rbtnFizetesKar);
         rbtnFizetesKar.setText("Kártyás utalás");
         rbtnFizetesKar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rbtnFizetesKar.setEnabled(false);
         rbtnFizetesKar.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 rbtnFizetesKarItemStateChanged(evt);
@@ -572,43 +540,53 @@ public class Pizzarendeles extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHattersargaLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlHattersargaLayout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlHattersargaLayout.createSequentialGroup()
-                                        .addComponent(lblKposszeg)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(pnlHattersargaLayout.createSequentialGroup()
-                                        .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblktyosszeg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(pnlHattersargaLayout.createSequentialGroup()
-                                                .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtfKpossz, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtfKtyossz, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addComponent(lblSzelet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(202, 202, 202))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHattersargaLayout.createSequentialGroup()
                                 .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlHattersargaLayout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(lblElerhetoseg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnRendelem, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnMegse, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblElerhetoseg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(pnlHattersargaLayout.createSequentialGroup()
-                                        .addComponent(pnlAlap, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(pnlFeltet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(172, 172, 172))))
+                                        .addComponent(pnlAlap, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(276, 276, 276)))
+                                .addGap(172, 172, 172))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHattersargaLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(pnlFeltet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(202, 202, 202))
+                            .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                                .addComponent(lblKposszeg)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                                .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lblktyosszeg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                                        .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(txtfKpossz, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(txtfKtyossz, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                                    .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btnRendelem, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)))
+                                .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                        .addComponent(lblSzelet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(202, 202, 202))
+                                    .addGroup(pnlHattersargaLayout.createSequentialGroup()
+                                        .addComponent(btnMegse, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                     .addGroup(pnlHattersargaLayout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addComponent(lblPepperoni)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lblKep, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addComponent(lblKep, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         pnlHattersargaLayout.setVerticalGroup(
             pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -637,15 +615,15 @@ public class Pizzarendeles extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblktyosszeg)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtfKtyossz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlHattersargaLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(lblSzelet)))
-                        .addGap(47, 47, 47)
+                                .addComponent(txtfKtyossz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHattersargaLayout.createSequentialGroup()
+                                .addComponent(lblSzelet)
+                                .addGap(18, 18, 18)))
                         .addGroup(pnlHattersargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRendelem)
-                            .addComponent(btnMegse))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(btnMegse)
+                            .addComponent(btnRendelem))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         lblPepperoni.getAccessibleContext().setAccessibleDescription("");
@@ -655,14 +633,14 @@ public class Pizzarendeles extends javax.swing.JFrame {
         pnlHatterpirosLayout.setHorizontalGroup(
             pnlHatterpirosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHatterpirosLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(pnlHattersarga, javax.swing.GroupLayout.PREFERRED_SIZE, 564, Short.MAX_VALUE)
-                .addGap(17, 17, 17))
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(pnlHattersarga, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         pnlHatterpirosLayout.setVerticalGroup(
             pnlHatterpirosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHatterpirosLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addGap(7, 7, 7)
                 .addComponent(pnlHattersarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -678,38 +656,13 @@ public class Pizzarendeles extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlHatterpiros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlHatterpiros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void rbtn24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn24ActionPerformed
-        
-    }//GEN-LAST:event_rbtn24ActionPerformed
-
-    private void chbHagyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbHagyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chbHagyActionPerformed
-
-    private void chbParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbParActionPerformed
-        
-    }//GEN-LAST:event_chbParActionPerformed
-
-    private void chbExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbExtraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chbExtraActionPerformed
-
-    private void rbtnFizetesKpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFizetesKpActionPerformed
-        
-        
-    }//GEN-LAST:event_rbtnFizetesKpActionPerformed
-
-    private void cbbTesztaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTesztaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbbTesztaActionPerformed
 
     private void btnRendelemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelemActionPerformed
         //JOptionPane.showMessageDialog(rootPane, "tesztverzió", "FIGYELMEZTETÉS", 2);
@@ -721,22 +674,18 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
     private void btnRendelemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRendelemMouseClicked
         int     ikonTipus = JOptionPane.INFORMATION_MESSAGE; //
-    JOptionPane.showMessageDialog(rootPane, "Az Ön rendelését felvettük, a pizza ára 1500Ft.", "RENDELÉSÉT FELVETTÜK", 1);
-    }//GEN-LAST:event_btnRendelemMouseClicked
-
-    private void rbtnFizetesKpStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbtnFizetesKpStateChanged
+    JOptionPane.showMessageDialog(rootPane, "Az Ön rendelését felvettük.", "RENDELÉSÉT FELVETTÜK", 1);
         
-       
-    }//GEN-LAST:event_rbtnFizetesKpStateChanged
+    }//GEN-LAST:event_btnRendelemMouseClicked
 
 
 
     private void rbtnFizetesKarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnFizetesKarMouseClicked
-        JOptionPane.showMessageDialog(rootPane, "Az Ön kárytával való fizetése érdekében átirányítjuk a bankártya oldalunka.", "KÁRTYÁVAL", 1);
+        //JOptionPane.showMessageDialog(rootPane, "Az Ön kárytával való fizetése érdekében átirányítjuk a bankártya oldalunka.", "KÁRTYÁVAL", 1);
     }//GEN-LAST:event_rbtnFizetesKarMouseClicked
 
     private void rbtnFizetesKpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnFizetesKpMouseClicked
-        JOptionPane.showMessageDialog(rootPane, "Kérem, hogy mikor megérkezik futárunk álljon készen a fizetendő összeggel.", "KÉSZPÉNZZEL", 1);
+        //JOptionPane.showMessageDialog(rootPane, "Kérem, hogy mikor megérkezik futárunk álljon készen a fizetendő összeggel.", "KÉSZPÉNZZEL", 1);
     }//GEN-LAST:event_rbtnFizetesKpMouseClicked
 
     private void chbTofuStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chbTofuStateChanged
@@ -753,7 +702,14 @@ public class Pizzarendeles extends javax.swing.JFrame {
     }//GEN-LAST:event_chbTofuItemStateChanged
 
     private void chbTofuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbTofuActionPerformed
-        
+        /*if (chbTofu.isSelected()){
+            osszeg += 200;
+                txtfKtyossz.setText(Integer.toString(osszeg));
+        }
+        else{
+            osszeg -= 200;
+                txtfKtyossz.setText(Integer.toString(osszeg));
+        }*/
     }//GEN-LAST:event_chbTofuActionPerformed
 
     private void chbTofActionerfordmed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbTofActionerfordmed
@@ -761,7 +717,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
     }//GEN-LAST:event_chbTofActionerfordmed
 
     private void rbtn24ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbtn24ItemStateChanged
-        if (rbtn24.isSelected() || rbtn32.isSelected() || rbtn45.isSelected()){
+        if (rbtn24.isSelected() ){
             chbPepp.setEnabled(true);
             chbSonka.setEnabled(true);
             chbKuk.setEnabled(true);
@@ -771,7 +727,10 @@ public class Pizzarendeles extends javax.swing.JFrame {
             chbAn.setEnabled(true);
             chbTofu.setEnabled(true);
             chbExtra.setEnabled(true);
-        }else{
+            btnRendelem.setEnabled(true);
+            rbtnFizetesKp.setEnabled(true);
+            rbtnFizetesKar.setEnabled(true);
+        }/*else{
             chbPepp.setEnabled(false);
             chbSonka.setEnabled(false);
             chbKuk.setEnabled(false);
@@ -781,7 +740,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
             chbAn.setEnabled(false);
             chbTofu.setEnabled(false);
             chbExtra.setEnabled(false);
-        }
+        }*/
     }//GEN-LAST:event_rbtn24ItemStateChanged
 
     private void rbtnFizetesKarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbtnFizetesKarItemStateChanged
@@ -789,12 +748,23 @@ public class Pizzarendeles extends javax.swing.JFrame {
         
     }//GEN-LAST:event_rbtnFizetesKarItemStateChanged
 
-    private void rbtn32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbtn32ActionPerformed
-
     private void rbtn32ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbtn32ItemStateChanged
-        if (rbtn24.isSelected() || rbtn32.isSelected() || rbtn45.isSelected()){
+        if (rbtn32.isSelected() ){
+            chbPepp.setEnabled(true);
+            chbSonka.setEnabled(true);
+            chbKuk.setEnabled(true);
+            chbGomba.setEnabled(true);
+            chbHagy.setEnabled(true);
+            chbPar.setEnabled(true);
+            chbAn.setEnabled(true);
+            chbTofu.setEnabled(true);
+            chbExtra.setEnabled(true);
+            btnRendelem.setEnabled(true);
+            rbtnFizetesKar.setEnabled(true);
+            rbtnFizetesKp.setEnabled(true);
+        }
+        
+        /*if (rbtn24.isSelected() || rbtn32.isSelected() || rbtn45.isSelected()){
             chbPepp.setEnabled(true);
             chbSonka.setEnabled(true);
             chbKuk.setEnabled(true);
@@ -814,11 +784,26 @@ public class Pizzarendeles extends javax.swing.JFrame {
             chbAn.setEnabled(false);
             chbTofu.setEnabled(false);
             chbExtra.setEnabled(false);
-        }
+        }*/
     }//GEN-LAST:event_rbtn32ItemStateChanged
 
     private void rbtn45ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rbtn45ItemStateChanged
-        if (rbtn24.isSelected() || rbtn32.isSelected() || rbtn45.isSelected()){
+        if (rbtn45.isSelected() ){
+            chbPepp.setEnabled(true);
+            chbSonka.setEnabled(true);
+            chbKuk.setEnabled(true);
+            chbGomba.setEnabled(true);
+            chbHagy.setEnabled(true);
+            chbPar.setEnabled(true);
+            chbAn.setEnabled(true);
+            chbTofu.setEnabled(true);
+            chbExtra.setEnabled(true);
+            btnRendelem.setEnabled(true);
+            rbtnFizetesKar.setEnabled(true);
+            rbtnFizetesKp.setEnabled(true);
+        }
+        
+        /*if (rbtn24.isSelected() || rbtn32.isSelected() || rbtn45.isSelected()){
             chbPepp.setEnabled(true);
             chbSonka.setEnabled(true);
             chbKuk.setEnabled(true);
@@ -838,27 +823,22 @@ public class Pizzarendeles extends javax.swing.JFrame {
             chbAn.setEnabled(false);
             chbTofu.setEnabled(false);
             chbExtra.setEnabled(false);
-        }
+        }*/
     }//GEN-LAST:event_rbtn45ItemStateChanged
-
-    private void rbtn24StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbtn24StateChanged
-        
-    }//GEN-LAST:event_rbtn24StateChanged
 
     private void rbtn24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtn24MouseClicked
         //JOptionPane.showMessageDialog(rootPane, "A pizza ára: 2500Ft", "PIZZA ÁR", 1);
     }//GEN-LAST:event_rbtn24MouseClicked
 
+    private void cbbTesztaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbTesztaItemStateChanged
+        //
+    }//GEN-LAST:event_cbbTesztaItemStateChanged
+
     private void csere() {
-        csere();
         String s = txtfKpossz.getText();
         txtfKpossz.setText(txtfKtyossz.getText());
         txtfKtyossz.setText(s);
     }
-
-  
-        
-    
     /**
      * @param args the command line arguments
      */
