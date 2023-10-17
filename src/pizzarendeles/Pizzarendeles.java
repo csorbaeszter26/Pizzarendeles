@@ -128,6 +128,16 @@ public class Pizzarendeles extends javax.swing.JFrame {
                 rbtn24ItemStateChanged(evt);
             }
         });
+        rbtn24.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbtn24StateChanged(evt);
+            }
+        });
+        rbtn24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtn24MouseClicked(evt);
+            }
+        });
         rbtn24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtn24ActionPerformed(evt);
@@ -702,7 +712,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbTesztaActionPerformed
 
     private void btnRendelemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRendelemActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "tesztverzió", "FIGYELMEZTETÉS", 2);
+        //JOptionPane.showMessageDialog(rootPane, "tesztverzió", "FIGYELMEZTETÉS", 2);
     }//GEN-LAST:event_btnRendelemActionPerformed
 
     private void btnMegseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMegseActionPerformed
@@ -830,6 +840,14 @@ public class Pizzarendeles extends javax.swing.JFrame {
             chbExtra.setEnabled(false);
         }
     }//GEN-LAST:event_rbtn45ItemStateChanged
+
+    private void rbtn24StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbtn24StateChanged
+        
+    }//GEN-LAST:event_rbtn24StateChanged
+
+    private void rbtn24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtn24MouseClicked
+        JOptionPane.showMessageDialog(rootPane, "A pizza ára: 2500Ft", "PIZZA ÁR", 1);
+    }//GEN-LAST:event_rbtn24MouseClicked
 
     private void csere() {
         csere();
