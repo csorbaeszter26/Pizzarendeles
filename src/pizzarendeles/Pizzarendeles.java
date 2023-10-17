@@ -721,7 +721,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
 
     private void btnRendelemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRendelemMouseClicked
         int     ikonTipus = JOptionPane.INFORMATION_MESSAGE; //
-    JOptionPane.showMessageDialog(rootPane, "Az Ön rendelését felvettük.", "RENDELÉSÉT FELVETTÜK", 1);
+    JOptionPane.showMessageDialog(rootPane, "Az Ön rendelését felvettük, a pizza ára 1500Ft.", "RENDELÉSÉT FELVETTÜK", 1);
     }//GEN-LAST:event_btnRendelemMouseClicked
 
     private void rbtnFizetesKpStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbtnFizetesKpStateChanged
@@ -846,7 +846,7 @@ public class Pizzarendeles extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtn24StateChanged
 
     private void rbtn24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtn24MouseClicked
-        JOptionPane.showMessageDialog(rootPane, "A pizza ára: 2500Ft", "PIZZA ÁR", 1);
+        //JOptionPane.showMessageDialog(rootPane, "A pizza ára: 2500Ft", "PIZZA ÁR", 1);
     }//GEN-LAST:event_rbtn24MouseClicked
 
     private void csere() {
